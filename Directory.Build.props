@@ -1,0 +1,5 @@
+<Project>
+  <PropertyGroup>
+    <RootNamespace>Bnfour.WorkflowTesting.Proper.$(MSBuildProjectName)</RootNamespace>
+  </PropertyGroup>
+</Project>

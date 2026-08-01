@@ -1,4 +1,4 @@
-﻿namespace Bnfour.WorkflowTesting.CompletelyExternal;
+namespace Bnfour.WorkflowTesting.CompletelyExternal;
 
 public static class SomeUtility
 {
