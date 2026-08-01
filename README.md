@@ -22,6 +22,9 @@ When run, it just outputs a copypasta into stdout.
 
 The app has a dependency on some DLL not distributed in releases for some _mysterious_ reason, and would not run or build without it. See later sections on the DLL itself.
 
+### The "tests"
+Just there to add a step to the workflow. Not that any of my projects has good coverage.
+
 ### Helper scripts
 Just some bash scripts that mock other bash scripts that originally automated the stuff I did by hand to create a release asset .zip on my local machine; these will probably get updated to run on a runner VM later.
 
