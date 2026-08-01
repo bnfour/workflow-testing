@@ -32,6 +32,12 @@ TODO what they actually do, like zipping the "mod" assembly and its runtime conf
 
 In real projects those DLLs would be things like MelonLoader, its custom Harmony, game assemblies, and random Unity libraries. I think the latter two are not okay to distribute, the users are supposed to have these as well.
 
+While I do dump all the dependencies MelonLoader install generates to the `references` folder, a ripgrep call like
+```bash
+rg -o --no-filename --no-line-number --no-heading "\.\./references/(.*\.dll)" -r '$1' | sort -u
+```
+can be used to get filenames of DLLs that are actually referenced. If the runner build fails because of missing one, just re-run and add missing ones to the upload.
+
 The "library" itself is a single method to format the copypasta like [this website](https://stallman-copypasta.github.io/). Original credit goes to rms, _the_ free software man.
 
 # Actual workflow
