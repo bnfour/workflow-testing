@@ -43,9 +43,5 @@ can be used to get filenames of DLLs that are actually referenced. If the runner
 
 The "library" itself is a single method to format the copypasta like [this website](https://stallman-copypasta.github.io/). Original credit goes to rms, _the_ free software man.
 
-# Actual workflow
-TODO a small section on this later when i get it working?
-like what, build, pack, draft a release, upload packed thing as a release asset, then i write "funny" release notes and publish the finished release, maybe even set it up to be immutable
-
 # License
 0BSD. Do whatever.
