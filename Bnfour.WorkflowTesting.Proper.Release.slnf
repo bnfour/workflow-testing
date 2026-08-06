@@ -1,0 +1,8 @@
+{
+  "solution": {
+    "path": "Bnfour.WorkflowTesting.Proper.slnx",
+    "projects": [
+      "SomeAssembly/SomeAssembly.csproj"
+    ]
+  }
+}

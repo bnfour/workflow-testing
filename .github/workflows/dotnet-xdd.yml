@@ -33,8 +33,9 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    # note that Release build uses solution filter to not include tests in release mode
     - name: Release build for packing
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build --configuration Release --no-restore Bnfour.WorkflowTesting.Proper.Release.slnf
     - name: Run the release packer script
       shell: bash
       run: bash helper_script.sh
