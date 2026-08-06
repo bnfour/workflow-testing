@@ -34,6 +34,8 @@ sum=$(sha256sum SomeAssembly.dll)
 echo "=== dll's sha256 ==="
 echo "$sum"
 
+# back to the root we go
+cd ..
 # generate the release notes template to be edited manually before publishing
 cat > notes <<EOF
 _funne subtitle_
