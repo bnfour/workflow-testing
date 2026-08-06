@@ -15,7 +15,7 @@ This repo consists of two parts that mock different parts of actual mod projects
 ## "Mod solution"
 `Bnfour.WorkflowTesting.Proper.slnx` is a solution for the actual mod projects for a given repo. It has one project, `SomeAssembly`, that is a placeholder to an actual MelonLoader mod, and is published in releases.
 
-There's also `Bnfour.WorkflowTesting.Proper.Release.slnf` (note the f at the end) — a so called solution filter, whose purpose  it to filter out the tests project from the release build. (Yes, I care.)
+There's also `Bnfour.WorkflowTesting.Proper.Release.slnf` (note the f at the end) — a so called solution filter, which filters out the tests project from the release build. (Yes, I care.)
 
 ### The "app"
 `SomeAssembly` is a console app, not a classlib like mods it imitates — it's not really important, I just wanted something runnable.
