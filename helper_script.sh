@@ -20,17 +20,36 @@ last_version=${last_version:-0}
 
 new_version=$(( "$last_version" + 1 ))
 # also store it for later release creation i guess
-echo $new_version > new-version
+echo "new_version=$new_version" >> "$GITHUB_ENV"
 
 archive_name="le-release-$(printf "%02d" $new_version).zip"
+echo "filename=$archive_name" >> "$GITHUB_ENV"
 
 # cd for clean relative names
 cd release || exit 2
 zip -r "../$archive_name" ./*
 
 # just show it in the log "prominently" so it can be compared with actual release assets,
-# and also store to put into release notes
 sum=$(sha256sum SomeAssembly.dll)
 echo "=== dll's sha256 ==="
 echo "$sum"
-echo "$sum" > checksums
+
+# generate the release notes template to be edited manually before publishing
+cat > notes <<EOF
+_funne subtitle_
+
+general tl;dr
+
+compatibility data
+
+## Changelog
+log of changes: tl;dr, then actual notes per module
+
+optional note about re-release
+
+## Checksums
+Don't forget to verify your downloads! SHA256 checksums for DLLs:
+\`\`\`
+$sum
+\`\`\`
+EOF

@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build_pack_draft_all_in_one:
 
     runs-on: ubuntu-latest
 
@@ -21,7 +21,7 @@ jobs:
       env:
         PASS: ${{ secrets.DOWNLOAD_PASSWORD }}
         URL: ${{ secrets.DOWNLOAD_URL }}
-      run: curl -u "runner:$PASS" $URL --output references.zip
+      run: curl -u "runner:$PASS" "$URL" --output references.zip
     - name: Unpack external dependencies
       run: unzip references.zip -d references/
     - name: Restore dependencies
@@ -33,3 +33,9 @@ jobs:
     - name: Run the release packer script
       shell: bash
       run: bash helper_script.sh
+    - name: Draft the release in repo
+      shell: bash
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # --fail-on-no-commits seems like a good idea in actual repos
+      run: gh release create "v$new_version" "$filename" --draft --title "v$new_version — tl;dr" --notes-file notes
