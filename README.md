@@ -15,27 +15,29 @@ This repo consists of two parts that mock different parts of actual mod projects
 ## "Mod solution"
 `Bnfour.WorkflowTesting.Proper.slnx` is a solution for the actual mod projects for a given repo. It has one project, `SomeAssembly`, that is a placeholder to an actual MelonLoader mod, and is published in releases.
 
+There's also `Bnfour.WorkflowTesting.Proper.Release.slnf` (note the f at the end) — a so called solution filter, whose purpose  it to filter out the tests project from the release build. (Yes, I care.)
+
 ### The "app"
 `SomeAssembly` is a console app, not a classlib like mods it imitates — it's not really important, I just wanted something runnable.
 
-When run, it just outputs a copypasta into stdout.
+When run, it just outputs a copypasta into stdout. No arguments, nothing. I'd just like to interject for a moment.
 
 The app has a dependency on some DLL not distributed in releases for some _mysterious_ reason, and would not run or build without it. See later sections on the DLL itself.
 
 ### The "tests"
 Just there to add a step to the workflow. Not that any of my projects has good coverage.
 
-### Helper scripts
-Just some bash scripts that mock other bash scripts that originally automated the stuff I did by hand to create a release asset .zip on my local machine; these will probably get updated to run on a runner VM later.
+### Helper script
+Just some bash script that mocks other bash scripts that originally automated the stuff I did by hand to create a release asset .zip on my local machine.
 
-TODO what they actually do, like zipping the "mod" assembly and its runtime config
+Basically, this pulls all the stuff to include in a release — built binaries, readmes, licenses — into one place and then archives all that to be used as a release asset. It also determines the release version based on previous tags. I'll probably split that into smaller scripts/commands in actual repos for neater job steps that are supposed to do one thing only (at least in my understanding).
 
 ## "External dependency"
 `CompletelyExternal/Reference.csproj` is source for an "external" DLL that provides some utility for the actual app. It's here just so the repo is self-sufficient, and is never built directly. Instead, I'm supposed to provide the binary for runners "somehow". The solution I've come up with is to host it at non-disclosed URL, provided to runners as repo secret, so it's accessible to these only, but nowhere else.
 
 In real projects those DLLs would be things like MelonLoader, its custom Harmony, game assemblies, and random Unity libraries. I think the latter two are not okay to distribute, the users are supposed to have these as well.
 
-While I do dump all the dependencies MelonLoader install generates to the `references` folder, a ripgrep call like
+While I do dump all the dependencies MelonLoader install generates to the `references` folder, a `ripgrep` call like
 ```bash
 rg -o --no-filename --no-line-number --no-heading "\.\./references/(.*\.dll)" -r '$1' | sort -u
 ```
