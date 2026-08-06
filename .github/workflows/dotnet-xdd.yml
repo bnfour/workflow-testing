@@ -1,0 +1,32 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+# Also obligatory: https://noyaml.com/
+
+name: ".NET xdd"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+    - name: Download external dependencies
+      shell: bash
+      env:
+        PASS: ${{ secrets.DOWNLOAD_PASSWORD }}
+        URL: ${{ secrets.DOWNLOAD_URL }}
+      run: curl -u "runner:$PASS" $URL --output references.zip
+    - name: Unpack external dependencies
+      run: unzip references.zip -d references/
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
