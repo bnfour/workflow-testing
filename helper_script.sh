@@ -55,3 +55,5 @@ Don't forget to verify your downloads! SHA256 checksums for DLLs:
 $sum
 \`\`\`
 EOF
+
+echo ". o O (alright...)"
