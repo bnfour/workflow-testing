@@ -5,7 +5,7 @@
 
 This repo is a playground to get myself familiar with GitHub's CI/CD to build and draft releases there; testing not on a real project with real users, but on a thing that is structured "similar" to my repos I'd like to set up CI/CD for — with MelonLoader mods for Unity games, having its own caveats, like not distributing random Unity DLLs the mods depend on to be built and run. It's probably not very useful (or useful at all) for anyone else.
 
-I'm still not sure "having the accessibly via non-public URL only shared to actual workers" is completely okay, but they have to get these _somewhere_, and I'd like to at least experiment with this.
+I'm still not sure having the accessibly via non-public URL only shared to actual workers is completely okay, but they have to get these _somewhere_, and I'd like to at least experiment with this.
 
 If you're still interested, below is a quick rundown on what this repo is about.
 
