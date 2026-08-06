@@ -14,8 +14,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-      with:
-        fetch-tags: true
+    - name: Fetch tags without full history
+      run: git fetch --tags
     # seems to be installed out of the box on ubuntu-latest these days
     # - name: Setup .NET
     #   uses: actions/setup-dotnet@v4
