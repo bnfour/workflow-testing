@@ -2,3 +2,4 @@
 **/obj
 references/*
 !references/.gitkeep
+release
