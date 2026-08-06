@@ -26,10 +26,10 @@ jobs:
       run: unzip references.zip -d references/
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build
+    - name: Build release for packing
       run: dotnet build -c Release --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+    - name: Test, also builds debug for itself
+      run: dotnet test --verbosity normal
     - name: Run the release packer script
       shell: bash
       run: bash helper_script.sh
