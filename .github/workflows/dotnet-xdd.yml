@@ -14,8 +14,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Fetch tags without full history
-      run: git fetch --tags
+      with:
+        fetch-tags: true
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
     - name: Download external dependencies
