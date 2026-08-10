@@ -7,6 +7,9 @@ name: ".NET xdd"
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build_pack_draft_all_in_one:
 
