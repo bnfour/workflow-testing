@@ -30,7 +30,7 @@ Just there to add a step to the workflow. Not that any of my projects has good c
 ### Helper script
 Just some bash script that mocks other bash scripts that originally automated the stuff I did by hand to create a release asset .zip on my local machine.
 
-Basically, this pulls all the stuff to include in a release — built binaries, readmes, licenses — into one place and then archives all that to be used as a release asset. It also determines the release version based on previous tags. I'll probably split that into smaller scripts/commands in actual repos for neater job steps that are supposed to do one thing only (at least in my understanding).
+Basically, this pulls all the stuff to include in a release — built binaries, readmes, licenses — into one place and then archives all that to be used as a release asset. It also determines the release version based on previous tags. In actual projects, there are into smaller scripts/commands for neater job steps that are supposed to do one thing only (at least in my own understanding).
 
 ## "External dependency"
 `CompletelyExternal/Reference.csproj` is source for an "external" DLL that provides some utility for the actual app. It's here just so the repo is self-sufficient, and is never built directly. Instead, I'm supposed to provide the binary for runners "somehow". The solution I've come up with is to host it at non-disclosed URL, provided to runners as repo secret, so it's accessible to these only, but nowhere else.
