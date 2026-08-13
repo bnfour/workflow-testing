@@ -7,8 +7,6 @@ This repo is a playground to get myself familiar with GitHub's CI/CD to build an
 
 I'm still not sure having the access via non-public URL only shared to actual workers is completely okay, but they have to get these _somewhere_, and I'd like to at least experiment with this.
 
-If you're still interested, below is a quick rundown on what this repo is about.
-
 # Contents
 This repo consists of two parts that mock different parts of actual mod projects I have.
 
