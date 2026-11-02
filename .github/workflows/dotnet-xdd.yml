@@ -19,9 +19,8 @@ jobs:
     - uses: actions/checkout@v7
     - name: Fetch tags without full history
       run: git fetch --tags
-    # seems to be installed out of the box on ubuntu-latest these days
-    # - name: Setup .NET
-    #   uses: actions/setup-dotnet@v4
+    - name: Did I forget to sign the commit
+      run: bash commit-sign-check.sh
     - name: Download external dependencies
       shell: bash
       env:
