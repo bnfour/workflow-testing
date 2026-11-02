@@ -10,6 +10,7 @@ email=$(git show --no-patch --format=%ae HEAD)
 
 # configured _signing_ SSH keys for the repo owner account
 # gh is available on runners and is shorter that curling with all the headers
+# (as long as you don't forget to set GH_TOKEN in env)
 keys=$(gh api "users/{owner}/ssh_signing_keys" \
     | jq -r '.[].key')
 
