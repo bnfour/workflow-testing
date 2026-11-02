@@ -20,6 +20,8 @@ jobs:
     - name: Fetch tags without full history
       run: git fetch --tags
     - name: Did I forget to sign the commit
+      env:
+        GH_TOKEN: ${{ github.token }}
       run: bash commit-sign-check.sh
     - name: Download external dependencies
       shell: bash
