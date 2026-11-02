@@ -28,4 +28,10 @@ done
 git config --local gpg.format ssh
 git config --local gpg.ssh.allowedsignersfile "$file"
 
-git verify-commit HEAD
+if git verify-commit HEAD
+then
+    echo "d_(^v^)_b"
+else
+    echo "he forgor"
+    exit 1
+fi
