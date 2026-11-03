@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
-# a ripoff of my existing one, no logs, bad directory structure,
-# it's only a PoC anyway
+# an older script that combines a lot of steps made separate in actual repos:
+# - creates asset directory
+# - copies text and binary assets to it
+# - creates a zip archive to be posted as release asset from that directory
+# - provides a draft of release notes for the release
+
+# no logs, bad directory structure, it's only a PoC anyway ¯\_(ツ)_/¯
 
 echo "omyega script running ε=ε=┌( >_<)┘"
 

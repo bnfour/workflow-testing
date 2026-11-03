@@ -22,7 +22,7 @@ jobs:
     - name: Did I forget to sign the commit
       env:
         GH_TOKEN: ${{ github.token }}
-      run: bash commit-sign-check.sh
+      run: bash build-scripts/commit-sign-check.sh
     - name: Download external dependencies
       shell: bash
       env:
@@ -42,7 +42,7 @@ jobs:
       run: dotnet build --configuration Release --no-restore Bnfour.WorkflowTesting.Proper.Release.slnf
     - name: Run the release packer script
       shell: bash
-      run: bash helper_script.sh
+      run: bash build-scripts/helper-script.sh
     - name: Draft the release in repo
       shell: bash
       env:
