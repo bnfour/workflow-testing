@@ -43,9 +43,14 @@ jobs:
     - name: Run the release packer script
       shell: bash
       run: bash build-scripts/helper-script.sh
+    - name: Create and push a signed tag
+      env:
+        SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+      run: bash build-scripts/create-signed-tag.sh
     - name: Draft the release in repo
       shell: bash
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # --fail-on-no-commits seems like a good idea in actual repos
-      run: gh release create "v$new_version" "$filename" --draft --title "v$new_version — tl;dr" --notes-file notes
+      # --verify-tag is required only if tag is created (read: signed) earlier in the workflow, it's ok to create it otherwise
+      run: gh release create "v$new_version" "$filename" --draft --title "v$new_version — tl;dr" --notes-file notes --verify-tag
