@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# currently unused, check v9 to see it in action:
+# https://github.com/bnfour/workflow-testing/releases/tag/v9
+
 # This script creates a signed tag for a commit it runs from:
 # - committer identity is whoever authored the base commit (me, basically)
 # - the key is provided via repo secrets (should match the committer)
