@@ -29,7 +29,7 @@ done
 git config --local gpg.format ssh
 git config --local gpg.ssh.allowedsignersfile "$file"
 
-if git verify-commit HEAD
+if git verify-commit HEAD &>/dev/null
 then
     echo "d_(^v^)_b"
 else
